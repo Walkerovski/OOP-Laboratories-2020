@@ -7,14 +7,15 @@ bool sprawdz(string wyraz)
     // nasze flagi sprawdzajace wystapienie minusa i kropki
     for(int i = 0; i < wyraz.size(); i++){
         // iterujemy sie po kazdym charze ze stringa
-        if(wyraz[i] < '0' || (char)wyraz[i] > '9')
+        if(wyraz[i] < '0' || wyraz[i] > '9'){
             // jezeli char nie jest z przedzialu [0, 9]
-            if(wyraz[i] != '.' && (wyraz[i] != '-' && i == 0)){
+            if(wyraz[i] != '.' && (wyraz[i] != '-' || i != 0)){
                 // ani nie jest kropka lub minusem na pierwszym miejscu
                 cout << "Podano bledny wyraz" << "\n";
                 return 0;
                 // wypisujemy blad i zwracamy falsz
             }
+        }
         if((wyraz[i] == '.' && kropki) || (wyraz[i] == '-' && minusy)){
             // jezeli char jest kropka lub minusem na pierwszym miejscu
             // sprawdzamy czy flaga nie jest juz przypadkiem odpalona

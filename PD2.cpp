@@ -63,7 +63,7 @@ void conversion(double value, string type){
     //zamieniamy on-line i wypluwamy wyniki do 15 cyfr
     for(auto it = dictionary.begin(); it != dictionary.end(); it ++)
     {
-        cout << setprecision(15) << it -> first << " " << it -> second * value << "\n";
+        cout << setprecision(15) << it -> second << " * " << value << " = " << it -> second * value << it -> first << "\n";
     }
 }
 int main()
@@ -79,7 +79,7 @@ int main()
             cout << "ciao!";
             return 0;
         }
-        cout << "Proszę wpisać jednostkę: ";
+        cout << "Proszę wpisać jednostkę:\n";
         cin >> in2;
         //sprawdzenie poprawnosci danych, wywolanie funkcji 
         if(check(in1) and dictionary[in2])conversion(stod(in1), in2);

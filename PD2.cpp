@@ -3,9 +3,9 @@ using namespace std;
 //nasz slowniczek z wywolaniem log(n)
 map<string, double> dictionary = {
     {"m", 1},
-    {"dm", 10},
-    {"cm", 100},
-    {"mm", 1000},
+    {"dm", 0.1},
+    {"cm", 0.01},
+    {"mm", 0.001},
     {"sztych", 198.51},
     {"ćwierć", 198.51/1.33},
     {"dłoń", 198.51/2.66},
@@ -58,12 +58,12 @@ bool check(string wyraz)
 
 //funkcja konwertujaca jednostki
 void conversion(double value, string type){
-    //sprowadzamy do bazowej
-    value /= dictionary[type];
+    //sprowadzamy do bazowej (m)
+    value *= dictionary[type];
     //zamieniamy on-line i wypluwamy wyniki do 15 cyfr
     for(auto it = dictionary.begin(); it != dictionary.end(); it ++)
     {
-        cout << setprecision(15) << it -> second << " * " << value << " = " << it -> second * value << it -> first << "\n";
+        cout << setprecision(15) << value << "m / " << it -> second << " = " << value / it -> second << it -> first << "\n";
     }
 }
 int main()

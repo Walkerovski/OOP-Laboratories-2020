@@ -76,14 +76,18 @@ int main()
         //zakonczenie pracy programu
         if(in1 == "end")
         {
-            cout << "ciao!";
+            cout << "ciao!\n";
             return 0;
         }
-        cout << "Proszę wpisać jednostkę:\n";
-        cin >> in2;
+        cout << "Proszę wpisać jednostkę:\nm, dm, cm, mm, sztych, ćwierć, dłoń, palec, ziarno\n";
+        cin >> in2; 
         //sprawdzenie poprawnosci danych, wywolanie funkcji 
         if(check(in1) and dictionary[in2])conversion(stod(in1), in2);
-        //jesli nie znamy jednostki informujemy o tym
-        if(!dictionary[in2]) cout << "brak jednostki\n";
+        //jesli nie znamy jednostki informujemy o tym, jak i usuwamy powstaly pusty rekord z mapy
+        if(!dictionary[in2])
+        {
+            cout << "brak jednostki\n";
+            dictionary.erase(in2);
+        }
     }
 }

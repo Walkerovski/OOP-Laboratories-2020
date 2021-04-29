@@ -42,15 +42,15 @@ class Fifo
         {
             if(!created)    //pierwszy element trafiający do kolejki
             {
-                last_node = new node<N>;    //utworzenie elementu ostatniego
+                last_node = new node<N>{set_value};    //utworzenie elementu ostatniego
                 last_node -> value = set_value; //przypisanie do niego wartosci
-                first_node = new node<N>; 		//utworzenie elemntu pierwszego
+                first_node = new node<N>{set_value}; 		//utworzenie elemntu pierwszego
                 first_node -> next = last_node;  //element pierwszy wskazuje na ostatni
                 created = 1;
             }
             else
             {
-                actual_node = new node<N>; //utworzenie nowego elementu kolejki
+                actual_node = new node<N>{set_value}; //utworzenie nowego elementu kolejki
                 actual_node -> value = set_value;   //przypisanie do niego wartosci
                 last_node -> next = actual_node;    //ostatni dotychczasowy element wskazuje na utworzony
                 last_node = actual_node;    //utworzony elementstaje się ostatnim
@@ -68,20 +68,14 @@ class Fifo
             delete actual_node;	//usunięcie pierwszego elementu w kolejce
             begin++;
         }
-        int get_first() //zwrócenie pierwszego elementu w kolejce
+        N get_first() //zwrócenie pierwszego elementu w kolejce
         {
             if(!is_empty())
             {
-                int msg = first_node -> next -> value;
+                N msg = first_node -> next -> value;
                 pop();
                 return msg;
             }
-            throw EmptyQueue();
-        }
-        int get_last() //wyznaczenie ostatniego elementu w kolejce
-        {
-            if(!is_empty())
-                return last_node -> value;
             throw EmptyQueue();
         }
         bool is_empty()

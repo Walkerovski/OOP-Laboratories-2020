@@ -54,8 +54,8 @@ int main()
     cout << "Out: " << Out << "\n";
     cout << "Out.first: " << Out.get_first() << "\n";
     Out.push_back(5);
-    cout <<"Out: " <<  Out << "\n";    
-    
+    cout <<"Out: " <<  Out << "\n";
+
     Fifo<int> Out2;
     Out2.push_back(1);
     Out2.push_back(2);
